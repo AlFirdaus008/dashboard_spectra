@@ -1,0 +1,13 @@
+{
+  "step": 54,
+  "status": "PASS",
+  "web_delivery_status": "WEB_PRESENTATION_PACKAGE_READY",
+  "scientific_status": "CLOSED_WITH_DOCUMENTED_LIMITATIONS",
+  "frontend_dashboard_consumption_authorized": true,
+  "scientific_recomputation_authorized": false,
+  "canonical_geometry_replacement_authorized": false,
+  "final_irc_claim_authorized": false,
+  "policy_contribution_claim_authorized": false,
+  "causal_policy_effect_claim_authorized": false,
+  "automated_regulatory_action_authorized": false
+}

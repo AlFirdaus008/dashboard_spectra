@@ -1,0 +1,9 @@
+claim_id,claim,status,reason
+C01,STEP51 identifies screening-based technical recommendation targets.,SUPPORTED,Directly supported by frozen STEP51 recommendation rules and target flags.
+C02,Hydrological-network bridge evidence can be combined with retrospective susceptibility and policy-overlap context for screening.,SUPPORTED_WITH_QUALIFICATION,Valid as multi-evidence screening; not proof of causality or authoritative basin-wide routing.
+C03,Mining/palm permit overlap represents policy exposure context.,SUPPORTED_WITH_QUALIFICATION,Permit/location overlap is not equivalent to observed mining or plantation footprint.
+C04,The susceptibility layer is a calibrated future flood probability.,NOT_AUTHORIZED,"Current implementation is retrospective flood susceptibility, not final calibrated disaster probability."
+C05,Policy/permit exposure causes flooding at a screened node.,NOT_AUTHORIZED,Spatial/model association and overlap do not establish causal policy effects.
+C06,"R1/R2 recommendations authorize moratorium, permit revocation, or other automatic regulatory action.",NOT_AUTHORIZED,STEP51 is technical decision support only.
+C07,A final IRC score and Policy Contribution percentage were produced for the Mahakam pilot.,NOT_AUTHORIZED,Both remain scientifically deferred in the frozen implementation.
+C08,The Mahakam pilot is the complete three-DAS final research implementation.,NOT_AUTHORIZED,"Mahakam is the current pilot; full scope includes Mahakam, Musi, and Larona, with Citarum for generalization."

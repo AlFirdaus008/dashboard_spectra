@@ -1,0 +1,88 @@
+{
+  "contract_name": "MAHAKAM_WEB_PRESENTATION_CONTRACT_V1",
+  "source_contract": "MAHAKAM_PILOT_DASHBOARD_DATA_CONTRACT_V1",
+  "source_step": 53,
+  "presentation_step": 54,
+  "primary_key": "grid_id",
+  "web_crs": "EPSG:4326",
+  "canonical_geometry_replaced": false,
+  "scientific_recomputation": false,
+  "default_map_scope": "DAS Mahakam pilot",
+  "legend": [
+    {
+      "recommendation_level": 1,
+      "code": "R1",
+      "label": "Integrated Cross-System Technical Review",
+      "interpretation": "Highest technical review tier in this screening system; not 'highest causal risk'."
+    },
+    {
+      "recommendation_level": 2,
+      "code": "R2",
+      "label": "Critical Bridge Targeted Validation",
+      "interpretation": "Targeted validation tier."
+    },
+    {
+      "recommendation_level": 3,
+      "code": "R3",
+      "label": "Multi-Signal Site Assessment",
+      "interpretation": "Multi-evidence screening follow-up."
+    },
+    {
+      "recommendation_level": 4,
+      "code": "R4",
+      "label": "Single-Context Follow-Up",
+      "interpretation": "Single-context screening follow-up."
+    },
+    {
+      "recommendation_level": 5,
+      "code": "R5",
+      "label": "Network Monitoring & Data Improvement",
+      "interpretation": "Network-oriented monitoring/data-improvement tier."
+    },
+    {
+      "recommendation_level": 99,
+      "code": "R0",
+      "label": "Reference / No Automated Recommendation",
+      "interpretation": "Reference node; no automated recommendation."
+    }
+  ],
+  "popup_fields": [
+    "grid_id",
+    "dashboard_recommendation_label",
+    "admin_district_name",
+    "admin_province_name",
+    "coordination_scope",
+    "susceptibility_percentile_01",
+    "high_susceptibility_primary",
+    "any_policy_overlap_primary",
+    "max_policy_overlap_pct",
+    "critical_cross_system_bridge",
+    "structural_bridge_candidate",
+    "administrative_hydrological_bridge",
+    "recommendation_evidence",
+    "recommended_action_bundle"
+  ],
+  "filter_fields": [
+    "recommendation_level",
+    "screening_target",
+    "admin_district_name",
+    "admin_province_name",
+    "coordination_scope",
+    "high_susceptibility_primary",
+    "any_policy_overlap_primary",
+    "critical_cross_system_bridge",
+    "structural_bridge_candidate",
+    "administrative_hydrological_bridge"
+  ],
+  "required_disclaimer": "Screening-based decision support for the Mahakam pilot. Recommendation classes are not calibrated future-risk classes, policy/permit overlap is not physical footprint, and spatial/model association does not establish causality or authorize regulatory action.",
+  "forbidden_labels_or_claims": [
+    "highest causal risk",
+    "calibrated future flood probability",
+    "policy exposure causes flooding",
+    "final IRC score",
+    "final Policy Contribution percentage",
+    "automatic permit revocation",
+    "automatic moratorium",
+    "full three-DAS research completed"
+  ]
+}

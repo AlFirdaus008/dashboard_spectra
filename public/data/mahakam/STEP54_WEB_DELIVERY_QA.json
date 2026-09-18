@@ -1,0 +1,22 @@
+{
+  "step": 54,
+  "mode": "WEB_PRESENTATION_ONLY_NO_SCIENTIFIC_RECOMPUTATION",
+  "step53_authorization": true,
+  "step53_freeze_integrity": true,
+  "canonical_input": true,
+  "required_semantics": true,
+  "web_crs_epsg4326": true,
+  "geometry_integrity": true,
+  "field_aliases": true,
+  "web_schema": true,
+  "semantic_preservation": true,
+  "export_re_read": true,
+  "post_export_semantics": true,
+  "class_distribution": true,
+  "claim_guardrail": true,
+  "status": "PASS",
+  "canonical_node_count": 24306,
+  "web_node_count": 24306,
+  "web_target_count": 1696,
+  "web_crs": "EPSG:4326"
+}

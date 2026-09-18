@@ -1,0 +1,15 @@
+field,alias
+grid_id,Grid / Node ID
+dashboard_recommendation_label,Recommendation Class
+admin_district_name,District / Regency
+admin_province_name,Province
+coordination_scope,Coordination Scope
+susceptibility_percentile_01,Retrospective Flood-Susceptibility Percentile
+high_susceptibility_primary,High Retrospective Susceptibility Context
+any_policy_overlap_primary,Any Policy/Permit Overlap Context
+max_policy_overlap_pct,Maximum Policy/Permit Overlap (%)
+critical_cross_system_bridge,Critical Cross-System Bridge
+structural_bridge_candidate,Structural Bridge Candidate
+administrative_hydrological_bridge,Administrative-Hydrological Bridge
+recommendation_evidence,Screening Evidence
+recommended_action_bundle,Technical Follow-Up Bundle

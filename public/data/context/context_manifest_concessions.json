@@ -1,0 +1,74 @@
+{
+  "manifest_id": "WEB_CONTEXT_CONCESSION_LAYERS_V1",
+  "generated_by": "web-dashboard/scripts/prepare-concession-layers.mjs",
+  "role": "CONTEXT_GEOMETRY_NOT_EVIDENCE",
+  "role_statement": "Layer ini adalah referensi visual lokasi konsesi. Tidak dipakai sebagai fitur model (STEP45 hanya memakai 4 prediktor fisik), bukti skoring, atau dasar reklasifikasi level R0-R5. Paket beku STEP54 tetap menjadi batas aplikasi yang sah. Poligon izin bukan jejak fisik tambang/perkebunan yang teramati langsung di lapangan.",
+  "not_part_of": "STEP54_WEB_PRESENTATION_PACKAGE",
+  "frozen_package_untouched": true,
+  "target_crs": "EPSG:4326",
+  "coordinate_decimals": 5,
+  "field_aliases": {
+    "mining_concessions": {
+      "nama_usaha": "nama badan usaha pemegang izin",
+      "badan_usaha": "bentuk badan usaha (PT, CV, ...)",
+      "jenis_izin": "jenis izin (IUP)",
+      "komoditas": "komoditas tambang",
+      "kegiatan": "tahap kegiatan (eksplorasi/operasi produksi)",
+      "luas_ha": "luas sesuai SK (hektare)",
+      "kabupaten": "kabupaten/kota",
+      "berlaku_hingga": "tahun akhir masa berlaku izin, dari sumber"
+    },
+    "palm_concessions": {
+      "nama_perusahaan": "nama perusahaan pemegang izin lokasi",
+      "kelompok_usaha": "kelompok usaha induk (jika tercatat)",
+      "status": "status pada sumber (mis. aktif)",
+      "luas_ha": "luas sesuai SK izin lokasi (hektare)",
+      "kabupaten": "kabupaten/kota"
+    }
+  },
+  "sources": {
+    "D01": {
+      "dataset_id": "D01",
+      "dataset_name": "Wilayah Izin Usaha Pertambangan (WIUP)",
+      "producer": "Kementerian ESDM (Ditjen Minerba), One Map",
+      "product": "ESDM One Map WIUP, snapshot Kalimantan Timur, dipotong ke DAS Mahakam",
+      "retrieval_date": "2026-08-28",
+      "license_status": "PUBLICLY ACCESSIBLE; REDISTRIBUTION STATUS UNCLEAR (belum dikonfirmasi ke ESDM/PPID)",
+      "validation_status": "CONDITIONAL; APPROVED_FOR_MODELING: NO (tidak pernah dipakai sebagai fitur model)",
+      "known_caveats": "26 kelompok geometri duplikat pada data sumber (dibiarkan apa adanya, tidak didedupe secara sepihak); snapshot satu waktu (2026-08-28), bukan arsip historis; izin legal tidak setara dengan jejak fisik tambang.",
+      "attribution": "Sumber: Kementerian ESDM - One Map WIUP",
+      "raw_feature_count": 319,
+      "source_file": "data/02_interim/mahakam/D01/D01_WIUP_intersection_D08_DAS_Mahakam.geojson"
+    },
+    "D02": {
+      "dataset_id": "D02",
+      "dataset_name": "Izin Lokasi Perkebunan Sawit",
+      "producer": "Badan Informasi Geospasial (BIG), Kebijakan Satu Peta",
+      "product": "KSP layer Izin Lokasi, snapshot Kutai Barat + Kutai Kartanegara + Kutai Timur",
+      "retrieval_date": "2026-08-28",
+      "license_status": "PUBLICLY ACCESSIBLE; REDISTRIBUTION STATUS UNCLEAR (belum dikonfirmasi ke BIG/KSP)",
+      "validation_status": "CONDITIONAL; MODELING GATE: CLOSED (tidak pernah dipakai sebagai fitur model)",
+      "known_caveats": "Hanya mencakup 3 dari kabupaten/kota DAS Mahakam (Mahakam Ulu belum tercakup di sumber); sebagian tanggal SK sudah lama (maksimum tercatat 2019, satu baris anomali 1899); status \"aktif\" pada sumber bukan jaminan validitas terkini; izin lokasi bukan jejak fisik perkebunan yang teramati langsung di lapangan.",
+      "attribution": "Sumber: BIG - Kebijakan Satu Peta, layer Izin Lokasi",
+      "raw_feature_count": 256,
+      "source_files": [
+        "data/01_raw/mahakam/D02_PALM_PERMIT/raw/D02_KSP_Izin_Lokasi_Sawit_Kutai_Barat_snapshot_2026-08-28.geojson",
+        "data/01_raw/mahakam/D02_PALM_PERMIT/raw/D02_KSP_Izin_Lokasi_Sawit_Kutai_Kartanegara_snapshot_2026-08-28.geojson",
+        "data/01_raw/mahakam/D02_PALM_PERMIT/raw/D02_KSP_Izin_Lokasi_Sawit_Kutai_Timur_snapshot_2026-08-28.geojson"
+      ]
+    }
+  },
+  "restriction_note": "Kedua sumber berstatus publicly accessible dengan hak redistribusi yang belum eksplisit, sama seperti status D08/D09/D10 pada context_manifest.json. Ditampilkan atas instruksi eksplisit pemilik proyek; atribusi disertakan pada peta, hindari penggunaan komersial.",
+  "outputs": {
+    "mining_concessions.geojson": {
+      "features": 319,
+      "size_bytes": 296975,
+      "sha256": "4bad9ada79cbc5bcc24ed0ede91673cd0c473239a6a6e3c37f1936a4957d8d66"
+    },
+    "palm_concessions.geojson": {
+      "features": 256,
+      "size_bytes": 1657414,
+      "sha256": "5652619a912f6e2aa58dcb9c33d98d91afed332e093e9ea28ecfeb79961a6f3c"
+    }
+  }
+}

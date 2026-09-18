@@ -1,0 +1,7 @@
+{
+  "python": "3.10.19 (main, Dec  5 2025, 20:17:35) [MSC v.1944 64 bit (AMD64)]",
+  "platform": "Windows-10-10.0.26200-SP0",
+  "numpy": "2.2.6",
+  "pandas": "2.3.3",
+  "geopandas": "1.1.4"
+}

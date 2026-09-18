@@ -1,0 +1,100 @@
+{
+  "manifest_id": "WEB_CONTEXT_LAYERS_V1",
+  "generated_by": "web-dashboard/scripts/build_context_layers.py",
+  "role": "CONTEXT_GEOMETRY_NOT_EVIDENCE",
+  "role_statement": "Layer ini adalah referensi visual untuk orientasi peta. Tidak satu pun dipakai sebagai fitur model, bukti skoring, atau dasar reklasifikasi level R0-R5. Paket beku STEP54 tetap menjadi batas aplikasi yang sah.",
+  "not_part_of": "STEP54_WEB_PRESENTATION_PACKAGE",
+  "frozen_package_untouched": true,
+  "admin_clipped_to_basin": true,
+  "admin_clip_note": "Layer D09 menyimpan poligon kabupaten utuh. Geometri dipotong ke batas DAS Mahakam agar peta tidak menampilkan wilayah di luar cakupan; atribut km2 tetap diambil apa adanya dari sumber.",
+  "target_crs": "EPSG:4326",
+  "coordinate_decimals": 5,
+  "simplification_tolerance_degrees": {
+    "basin": 0.002,
+    "admin_kabupaten": 0.004,
+    "rivers_major": 0.002,
+    "rivers_minor": 0.003
+  },
+  "field_aliases": {
+    "basin": {
+      "name": "nama DAS"
+    },
+    "admin_kabupaten": {
+      "name": "nama kabupaten/kota",
+      "prov": "nama provinsi",
+      "km2": "luas irisan dengan DAS Mahakam (km2)",
+      "lx": "bujur titik label (pole of inaccessibility, di dalam poligon)",
+      "ly": "lintang titik label"
+    },
+    "rivers_*": {
+      "name": "nama sungai (null bila tidak dinamai di sumber)",
+      "cls": "kelas hierarki: primary | secondary | tertiary",
+      "km": "panjang segmen di dalam DAS (km)"
+    }
+  },
+  "river_class_derivation": {
+    "method": "LCODE RBI 1:250.000 layer 798",
+    "mapping": {
+      "60108": "primary",
+      "60110": "secondary",
+      "60112": "tertiary"
+    },
+    "verified_evidence": "60108 = 7 segmen, rata-rata 426 km, maksimum 1.584,91 km (Sungai Mahakam); 60110 = 1.130 segmen, rata-rata 12,25 km; 60112 = 4.230 segmen, rata-rata 2,07 km.",
+    "unavailable_attributes": "river_type_std, river_order_std, WMAX, KLSSNG, NAMWS, STATUS seluruhnya bernilai UNKNOWN/null pada layer standardisasi, sehingga hierarki diturunkan dari LCODE, bukan dari atribut tersebut."
+  },
+  "sources": {
+    "D08": {
+      "dataset_id": "D08",
+      "dataset_name": "Batas DAS Mahakam",
+      "producer": "Badan Informasi Geospasial (BIG)",
+      "product": "Atlas Wilayah Sungai - SUMBERDAYAAIR_DAERAHALIRANSUNGAI (layer 14)",
+      "source_url": "https://geoservices.big.go.id/gis/rest/services/PTRA/Atlas_Wilayah_Sungai/MapServer/14",
+      "retrieval_date": "2026-08-28T08:52:39Z",
+      "license_status": "PUBLICLY ACCESSIBLE; REDISTRIBUTION STATUS UNCLEAR",
+      "attribution": "Sumber: BIG - Atlas Wilayah Sungai (Nama_DAS = 'DAS Mahakam')"
+    },
+    "D09": {
+      "dataset_id": "D09",
+      "dataset_name": "Batas administrasi kabupaten/kota",
+      "producer": "Badan Informasi Geospasial (BIG)",
+      "product": "BATASWILAYAH/BATAS_KABKOTA_AR MapServer/0 - edisi Juni 2026",
+      "source_url": "https://geoservices.big.go.id/rbi/rest/services/BATASWILAYAH/BATAS_KABKOTA_AR/MapServer/0",
+      "retrieval_date": "2026-08-31",
+      "license_status": "PUBLIC ACCESS; OPEN REDISTRIBUTION RIGHTS UNCLEAR",
+      "attribution": "Sumber: BIG - Batas Wilayah Administrasi Kabupaten/Kota (edisi Juni 2026)"
+    },
+    "D10": {
+      "dataset_id": "D10",
+      "dataset_name": "Jaringan sungai (hidrografi)",
+      "producer": "Badan Informasi Geospasial (BIG)",
+      "product": "RBI Rupabumi Indonesia 1:250.000 - Sungai (Garis), layer 798",
+      "source_url": "https://geoservices.big.go.id/rbi/rest/services/BASEMAP/Rupabumi_Indonesia/MapServer/798",
+      "retrieval_date": "2026-09-01",
+      "license_status": "PUBLICLY ACCESSIBLE; REDISTRIBUTION UNCLARED",
+      "attribution": "Sumber: BIG - RBI 1:250.000 Sungai (Garis), layer 798"
+    }
+  },
+  "restriction_note": "Ketiga sumber berstatus publicly accessible dengan hak redistribusi yang belum eksplisit. Atribusi disertakan pada peta; hindari penggunaan komersial.",
+  "outputs": {
+    "basin.geojson": {
+      "features": 1,
+      "size_bytes": 55530,
+      "sha256": "1a51b912052f9262a6c4f400bee9c5db8498aa23d2bc6a21d638ae25612d853e"
+    },
+    "admin_kabupaten.geojson": {
+      "features": 12,
+      "size_bytes": 169377,
+      "sha256": "a29ae5677462435fc218d8f83604b760006fe60773c5de2db4bb3562160b4315"
+    },
+    "rivers_major.geojson": {
+      "features": 1137,
+      "size_bytes": 727914,
+      "sha256": "e65bf9fcf2e055be3c3e4bba9c14aab57625eab44592b4747cc5664b296507e6"
+    },
+    "rivers_minor.geojson": {
+      "features": 4230,
+      "size_bytes": 931548,
+      "sha256": "638aac4284da0aea2e9794f994a12ff0d210afed12825b7a6d656aae6ca01fb6"
+    }
+  }
+}

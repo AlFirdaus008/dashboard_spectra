@@ -1,0 +1,11 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {readFile} from 'node:fs/promises';
+import {createHash} from 'node:crypto';
+import {validateCollection} from '../lib/validation/validate.mjs';
+const root=new URL('../public/data/mahakam/',import.meta.url);
+const read=async n=>JSON.parse(await readFile(new URL(n,root),'utf8'));
+const metadata=await read('metadata.json');
+test('all canonical records, targets and frozen distributions validate',async()=>{for(const scope of ['targets','all'])validateCollection(await read(metadata.files[scope]),metadata,scope);});
+test('copied artifacts and original artifacts retain identical bytes',async()=>{const copies=JSON.parse(await readFile(new URL('../COPY_MANIFEST.json',import.meta.url),'utf8'));for(const row of copies){const a=await readFile(new URL('../../'+row.source,import.meta.url));const b=await readFile(new URL('../../'+row.destination,import.meta.url));assert.deepEqual(a,b);const entry=metadata.manifest.find(m=>row.source.endsWith(m.file_name));if(entry)assert.equal(createHash('sha256').update(a).digest('hex'),entry.sha256);}});
+test('duplicate, missing, reclassified and incomplete data fail closed',async()=>{const good=await read(metadata.files.targets);for(const alter of [d=>d.features.pop(),d=>d.features[1].properties.grid_id=d.features[0].properties.grid_id,d=>delete d.features[0].properties.recommended_action_bundle,d=>d.features[0].properties.recommendation_level=0,d=>d.features[0].properties.screening_target=false,d=>d.features[0].geometry=null]){const d=structuredClone(good);alter(d);assert.throws(()=>validateCollection(d,metadata,'targets'));}});

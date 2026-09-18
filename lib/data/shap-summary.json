@@ -1,0 +1,43 @@
+{
+  "source": {
+    "step": 46,
+    "scope": "MODEL_INTERPRETATION_AND_CONTEMPORARY_POLICY_SCREENING_OVERLAY",
+    "shap_role": "MODEL_ATTRIBUTION_NOT_CAUSALITY",
+    "irc_constructed": false,
+    "policy_contribution_percent_claim": false,
+    "policy_shap_claim": false,
+    "successful_shap_components": 2,
+    "failed_shap_components": 1,
+    "primary_model": "FROZEN_STEP45_TREE_ENSEMBLE"
+  },
+  "features": [
+    {
+      "feature": "slope_mean_deg",
+      "rank": 1,
+      "consensus_normalized_importance": 0.5362924139890022,
+      "direction": "HIGHER_VALUE_TENDS_TO_DECREASE_MODEL_OUTPUT",
+      "mean_direction_rho": -0.7673742723789412
+    },
+    {
+      "feature": "max_event_antecedent_rainfall_7d_mm",
+      "rank": 2,
+      "consensus_normalized_importance": 0.19847364663072548,
+      "direction": "HIGHER_VALUE_TENDS_TO_DECREASE_MODEL_OUTPUT",
+      "mean_direction_rho": -0.5590460195690532
+    },
+    {
+      "feature": "max_event_antecedent_rainfall_3d_mm",
+      "rank": 3,
+      "consensus_normalized_importance": 0.16300287251726003,
+      "direction": "HIGHER_VALUE_TENDS_TO_INCREASE_MODEL_OUTPUT",
+      "mean_direction_rho": 0.41474073909012965
+    },
+    {
+      "feature": "distance_to_river_m",
+      "rank": 4,
+      "consensus_normalized_importance": 0.10223106686301241,
+      "direction": "HIGHER_VALUE_TENDS_TO_DECREASE_MODEL_OUTPUT",
+      "mean_direction_rho": -0.7185044566670344
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+[
+  {
+    "source": "documentation/step54_web_delivery/STEP54_CLAIM_BOUNDARY_MATRIX.csv",
+    "destination": "web-dashboard/public/data/mahakam/STEP54_CLAIM_BOUNDARY_MATRIX.csv"
+  },
+  {
+    "source": "documentation/step54_web_delivery/STEP54_ENVIRONMENT.json",
+    "destination": "web-dashboard/public/data/mahakam/STEP54_ENVIRONMENT.json"
+  },
+  {
+    "source": "documentation/step54_web_delivery/STEP54_FIELD_ALIASES.csv",
+    "destination": "web-dashboard/public/data/mahakam/STEP54_FIELD_ALIASES.csv"
+  },
+  {
+    "source": "documentation/step54_web_delivery/STEP54_GEOMETRY_AUDIT.csv",
+    "destination": "web-dashboard/public/data/mahakam/STEP54_GEOMETRY_AUDIT.csv"
+  },
+  {
+    "source": "documentation/step54_web_delivery/STEP54_MAHAKAM_WEB_ALL_NODES_EPSG4326.geojson",
+    "destination": "web-dashboard/public/data/mahakam/STEP54_MAHAKAM_WEB_ALL_NODES_EPSG4326.geojson"
+  },
+  {
+    "source": "documentation/step54_web_delivery/STEP54_MAHAKAM_WEB_RECOMMENDATION_TARGETS_EPSG4326.geojson",
+    "destination": "web-dashboard/public/data/mahakam/STEP54_MAHAKAM_WEB_RECOMMENDATION_TARGETS_EPSG4326.geojson"
+  },
+  {
+    "source": "documentation/step54_web_delivery/STEP54_RECOMMENDATION_DISTRIBUTION_AUDIT.csv",
+    "destination": "web-dashboard/public/data/mahakam/STEP54_RECOMMENDATION_DISTRIBUTION_AUDIT.csv"
+  },
+  {
+    "source": "documentation/step54_web_delivery/STEP54_VERIFIED_STEP53_FREEZE_MANIFEST.csv",
+    "destination": "web-dashboard/public/data/mahakam/STEP54_VERIFIED_STEP53_FREEZE_MANIFEST.csv"
+  },
+  {
+    "source": "documentation/step54_web_delivery/STEP54_WEB_DELIVERY_GATE.json",
+    "destination": "web-dashboard/public/data/mahakam/STEP54_WEB_DELIVERY_GATE.json"
+  },
+  {
+    "source": "documentation/step54_web_delivery/STEP54_WEB_DELIVERY_MANIFEST_SHA256.csv",
+    "destination": "web-dashboard/public/data/mahakam/STEP54_WEB_DELIVERY_MANIFEST_SHA256.csv"
+  },
+  {
+    "source": "documentation/step54_web_delivery/STEP54_WEB_DELIVERY_PROVENANCE.json",
+    "destination": "web-dashboard/public/data/mahakam/STEP54_WEB_DELIVERY_PROVENANCE.json"
+  },
+  {
+    "source": "documentation/step54_web_delivery/STEP54_WEB_DELIVERY_QA.json",
+    "destination": "web-dashboard/public/data/mahakam/STEP54_WEB_DELIVERY_QA.json"
+  },
+  {
+    "source": "documentation/step54_web_delivery/STEP54_WEB_DELIVERY_REPORT.md",
+    "destination": "web-dashboard/public/data/mahakam/STEP54_WEB_DELIVERY_REPORT.md"
+  },
+  {
+    "source": "documentation/step54_web_delivery/STEP54_WEB_PRESENTATION_CONTRACT.json",
+    "destination": "web-dashboard/public/data/mahakam/STEP54_WEB_PRESENTATION_CONTRACT.json"
+  }
+]
