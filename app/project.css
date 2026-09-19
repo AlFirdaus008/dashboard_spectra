@@ -534,6 +534,30 @@ summary:focus-visible {
   box-shadow: var(--shadow-md);
 }
 
+.project-intro::before {
+  content: '';
+  position: absolute;
+  inset: -20px;
+  background: url('/assets/hero-river-photo.jpg') center 82% / cover no-repeat;
+  filter: blur(7px) saturate(1.05);
+  transform: scale(1.06);
+  z-index: 0;
+}
+
+.project-intro::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(115deg, rgba(6, 20, 16, 0.86) 0%, rgba(8, 28, 23, 0.72) 45%, rgba(8, 28, 23, 0.55) 100%);
+  z-index: 1;
+}
+
+.project-intro > .intro-copy,
+.project-intro > .intro-aside {
+  position: relative;
+  z-index: 3;
+}
+
 .intro-eyebrow {
   font-size: 12px;
   letter-spacing: 1.8px;

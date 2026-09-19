@@ -19,6 +19,11 @@ type ModelResult = {
   model: string;
   parameters: string;
   rocAuc: string;
+  prAuc: string;
+  f1: string;
+  precision: string;
+  recall: string;
+  brierScore: string;
   role: string;
   isPrimary?: boolean;
 };
@@ -231,32 +236,68 @@ const PHASES: Phase[] = [
         model: 'Random Forest',
         parameters: '350 pohon, class_weight balanced_subsample',
         rocAuc: '0,944',
+        prAuc: '0,528',
+        f1: '0,456',
+        precision: '0,605',
+        recall: '0,366',
+        brierScore: '0,028',
         role: 'Anggota ensemble utama',
       },
       {
         model: 'XGBoost',
         parameters: '350 pohon, kedalaman maks. 6, learning rate 0,05, scale_pos_weight ≈22,6 untuk mengoreksi ketimpangan kelas',
         rocAuc: '0,953',
+        prAuc: '0,539',
+        f1: '0,488',
+        precision: '0,364',
+        recall: '0,737',
+        brierScore: '0,048',
         role: 'Anggota ensemble utama',
       },
       {
         model: 'LightGBM',
         parameters: '350 pohon, num_leaves 31, learning rate 0,05, class_weight balanced',
         rocAuc: '0,953',
+        prAuc: '0,554',
+        f1: '0,504',
+        precision: '0,385',
+        recall: '0,730',
+        brierScore: '0,045',
         role: 'Anggota ensemble utama',
       },
       {
         model: 'Logistic Regression',
         parameters: 'class_weight balanced, solver lbfgs, max_iter 2000, fitur distandarisasi (StandardScaler)',
         rocAuc: '0,960',
+        prAuc: '0,537',
+        f1: '0,388',
+        precision: '0,244',
+        recall: '0,950',
+        brierScore: '0,090',
         role: 'Baseline pembanding, tidak dipakai sebagai model akhir',
       },
       {
         model: 'Tree Ensemble Mean',
         parameters: 'Rata-rata tanpa bobot dari probabilitas Random Forest, XGBoost, dan LightGBM',
         rocAuc: '0,955',
+        prAuc: '0,551',
+        f1: '0,512',
+        precision: '0,420',
+        recall: '0,656',
+        brierScore: '0,035',
         role: 'Model akhir yang dipakai sistem',
         isPrimary: true,
+      },
+      {
+        model: 'GraphSAGE',
+        parameters: '2 lapisan graph neural network (hidden 32→16), grafik ketetanggaan rook 4-arah, 80 epoch, dropout 0,3, learning rate 0,005',
+        rocAuc: '0,956',
+        prAuc: '0,408',
+        f1: '0,401',
+        precision: '0,255',
+        recall: '0,944',
+        brierScore: '0,088',
+        role: 'Dibandingkan sebagai pendekatan lebih canggih, tidak dipakai karena PR-AUC lebih rendah',
       },
     ],
     note: 'Keempatnya diuji dengan validasi spasial 5-fold (StratifiedGroupKFold), blok spasial 20 km, tanpa tumpang tindih wilayah latih dan uji. Logistic Regression justru mencatat ROC-AUC tertinggi sendirian, tapi tetap diperlakukan sebagai baseline pembanding, bukan model akhir. Skor kerentanan sendiri berhasil dihitung untuk 77.519 dari 77.600 grid; 81 grid sisanya tidak kebagian skor karena salah satu dari keempat nilai prediktornya, misalnya kemiringan lahan atau curah hujan di lokasi itu, tidak tersedia lengkap. Arsitektur graph neural network (GraphSAGE) juga sempat dibandingkan sebagai pendekatan yang lebih canggih; ROC-AUC-nya (0,956) nyaris sama dengan Tree Ensemble Mean, tapi PR-AUC-nya justru lebih rendah (0,408 berbanding 0,551), jadi ensemble pohon yang lebih sederhana tetap dipakai.',
@@ -357,6 +398,20 @@ const PHASES: Phase[] = [
       { label: 'Komunitas Hidrologis', value: '973 komunitas' },
       { label: 'Node Bridge Kritis Lintas-Sistem', value: '25 node' },
     ],
+    steps: [
+      {
+        label: '5.367 ruas garis sungai',
+        detail: 'Dari D10 (garis sungai resmi BIG), ada 5.367 ruas garis yang melintasi DAS Mahakam.',
+      },
+      {
+        label: 'Difragmentasi mengikuti batas grid',
+        detail: 'Tiap ruas dipotong mengikuti batas tiap grid 1 km yang dilewatinya, lalu panjang tiap potongan dijumlahkan per grid.',
+      },
+      {
+        label: 'Grid tersentuh sungai jadi node',
+        detail: 'Grid dengan total panjang sungai lebih dari 0, walau cuma sepotong kecil, jadi node jaringan. Grid yang sama sekali tidak tersentuh garis sungai tetap ada di tabel fitur biasa, cuma tidak ikut jaringan. Hasilnya: 24.306 dari 77.600 grid jadi node.',
+      },
+    ],
     communityAlgorithms: [
       {
         algorithm: 'Louvain',
@@ -372,7 +427,7 @@ const PHASES: Phase[] = [
         isPrimary: true,
       },
     ],
-    note: 'Stabilitas di atas diukur dengan median Adjusted Rand Index (ARI) antar beberapa kali percobaan ulang dengan angka acak berbeda, semakin tinggi berarti hasil pengelompokannya semakin konsisten. Untuk hasil akhir, Leiden dijalankan lagi secara per-komponen (karena jaringan sungai ini punya 193 potongan graf yang saling terpisah), pada resolusi γ=1, menghasilkan 973 komunitas yang dipakai di seluruh dashboard. Pada pengujian ulang khusus skema ini, Leiden tetap lebih stabil (ARI 0,765) dibanding Louvain (ARI 0,718).',
+    note: 'Stabilitas di atas diukur dengan median Adjusted Rand Index (ARI) antar beberapa kali percobaan ulang dengan angka acak berbeda, semakin tinggi berarti hasil pengelompokannya semakin konsisten. Untuk hasil akhir, Leiden dijalankan lagi secara per-komponen (karena jaringan sungai ini punya 193 potongan graf yang saling terpisah), pada resolusi γ=1, menghasilkan 973 komunitas yang dipakai di seluruh dashboard. Pada pengujian ulang khusus skema ini, Leiden tetap lebih stabil (ARI 0,765) dibanding Louvain (ARI 0,718). Struktur graf ini sendiri (node dan sambungan) dibangun murni dari topologi sungai D10, independen dari skor kerentanan banjir. Skor kerentanan dari tahap pemodelan machine learning dan hasil overlay kebijakan dari tahap interpretasi SHAP baru ditempelkan sesudahnya sebagai atribut tambahan di tiap node, bukan untuk membentuk struktur jaringannya sama sekali.',
     gallery: [
       {
         src: '/assets/evidence/step07-hydrological-network.png',
@@ -614,6 +669,11 @@ export default function PipelineView() {
                                 <th>Tipe Model</th>
                                 <th>Parameter Utama</th>
                                 <th>ROC-AUC</th>
+                                <th>PR-AUC</th>
+                                <th>F1</th>
+                                <th>Precision</th>
+                                <th>Recall</th>
+                                <th>Brier Score</th>
                                 <th>Peran</th>
                               </tr>
                             </thead>
@@ -623,6 +683,11 @@ export default function PipelineView() {
                                   <td className="cell-strong">{m.model}</td>
                                   <td>{m.parameters}</td>
                                   <td className="cell-metric">{m.rocAuc}</td>
+                                  <td className="cell-metric">{m.prAuc}</td>
+                                  <td className="cell-metric">{m.f1}</td>
+                                  <td className="cell-metric">{m.precision}</td>
+                                  <td className="cell-metric">{m.recall}</td>
+                                  <td className="cell-metric">{m.brierScore}</td>
                                   <td className="cell-muted">{m.role}</td>
                                 </tr>
                               ))}
