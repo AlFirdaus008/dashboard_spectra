@@ -2,7 +2,7 @@ const GOALS: {title: string; description: string}[] = [
   {
     title: 'Pipeline prediksi terpadu berbasis spatial ensemble learning',
     description:
-      'Mengintegrasikan data izin tambang/perkebunan, tutupan lahan, produktivitas pertanian, dan kejadian bencana ke dalam satu basis data spasial skala DAS, dengan target klasifikasi kerentanan bencana yang andal dan terverifikasi secara spasial.',
+      'Mengintegrasikan data izin tambang/perkebunan, tutupan lahan, produktivitas pertanian, dan kejadian bencana ke dalam satu basis data spasial skala DAS (Daerah Aliran Sungai), dengan target klasifikasi kerentanan bencana yang andal dan terverifikasi secara spasial.',
   },
   {
     title: 'Identifikasi bridging nodes kritis',

@@ -6,7 +6,7 @@ export default function Hero() {
       <div className="intro-copy">
         <div className="intro-eyebrow"><span /> DUKUNGAN KEPUTUSAN GEOSPASIAL</div>
         <h1>Pandangan yang lebih jelas.<br /><span>Titik awal yang lebih baik.</span></h1>
-        <p>Jelajahi DAS Mahakam melalui evidence jaringan hidrologi, kerentanan retrospektif, dan konteks tumpang tindih kebijakan.</p>
+        <p>Jelajahi DAS (Daerah Aliran Sungai) Mahakam melalui evidence jaringan hidrologi, kerentanan retrospektif, dan konteks tumpang tindih kebijakan.</p>
         <div className="intro-actions">
           <Link className="primary-link" href="/atlas">Jelajahi atlas <span>↗</span></Link>
           <Link className="secondary-link story-intro-link" href="/story">Sorotan Kasus 3D <span>→</span></Link>
